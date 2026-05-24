@@ -13,31 +13,15 @@ void inicializarTabuleiro(char tabuleiro[SIZE][SIZE]) {
 }
 
 void imprimirTabuleiro(char tabuleiro[SIZE][SIZE]) {
-    printf("\n\n\t 0   1   2\n\n");
+    printf("\n\n");
+    printf("     0   1   2\n");
+    printf("   +---+---+---+\n");
 
-    for (int i = 0; i < SIZE; i++){
-        for (int j = 0; j < SIZE; j++) {
-            if (j == 0) {
-                printf("\t");
-            }
-
-            printf(" %c ", tabuleiro[i][j]);
-            
-            if(j < 2) {
-                printf("|");
-            }
-            
-            if(j == 2) {
-                printf("  %d", i);
-            }
-        }
-
-        if(i < 2) {
-            printf("\n\t-----------\n");
-        } else {
-            printf("\n");
-        }
+    for (int i = 0; i < SIZE; i++) {
+        printf(" %d | %c | %c | %c |\n", i, tabuleiro[i][0], tabuleiro[i][1], tabuleiro[i][2]);
+        printf("   +---+---+---+\n");
     }
+    printf("\n");
 }
 
 void lerEntrada(int jogador, int *linha, int *coluna) {
@@ -46,7 +30,9 @@ void lerEntrada(int jogador, int *linha, int *coluna) {
 }
 
 bool validarEntrada(char tabuleiro[SIZE][SIZE], int linha, int coluna) {
-    if (linha < 0 || linha > SIZE - 1) {
+    if (linha == -1 || coluna == -1) {
+        return false;
+    } else if (linha < 0 || linha > SIZE - 1) {
         return false;
     } else if (coluna < 0 || coluna > SIZE - 1) {
         return false;
@@ -71,14 +57,14 @@ bool verificarLinhas(char tabuleiro[SIZE][SIZE]) {
     if(tabuleiro[0][0] == 'O' && tabuleiro[0][1] == 'O' && tabuleiro[0][2] == 'O' ||
         tabuleiro[1][0] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[1][2] == 'O' ||
         tabuleiro[2][0] == 'O' && tabuleiro[2][1] == 'O' && tabuleiro[2][2] == 'O'){
-        printf("\nParabens! O jogador 1 venceu por linha!\n");
+        printf("\nParabéns! O jogador 1 venceu por linha!\n");
         return true;
     }
 
     if(tabuleiro[0][0] == 'X' && tabuleiro[0][1] == 'X' && tabuleiro[0][2] == 'X' ||
         tabuleiro[1][0] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[1][2] == 'X' ||
         tabuleiro[2][0] == 'X' && tabuleiro[2][1] == 'X' && tabuleiro[2][2] == 'X'){
-        printf("\nParabens! O jogador 2 venceu por linha!\n");
+        printf("\nParabéns! O jogador 2 venceu por linha!\n");
         return true;
     }
 

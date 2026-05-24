@@ -7,7 +7,7 @@
 #define SIZE 3
 
 int main() {
-    int linha, coluna, jogador, jogadas, opcao;
+    int linha, coluna, jogador, jogadas, input;
     bool ganhou = false;
     char tabuleiro[SIZE][SIZE];
 
@@ -20,12 +20,13 @@ int main() {
 
         do {            
             imprimirTabuleiro(tabuleiro);
+
             while (true) {
                 printf("\nJOGADOR 1 = O\nJOGADOR 2 = X\n");
                 lerEntrada(jogador, &linha, &coluna);
 
                 if (!validarEntrada(tabuleiro, linha, coluna)) {
-                    printf("Os valores devem ser entre 0 e 2 inclusive.\n");
+                    printf("Os valores devem ser entre 0 e 2.\n");
                     lerEntrada(jogador, &linha, &coluna);                    
                 } else {
                     break;
@@ -34,19 +35,18 @@ int main() {
 
             jogador = jogar(tabuleiro, linha, coluna, jogador);
             jogadas++;
-
             ganhou = verificarEstado(tabuleiro);
-        } while(!ganhou && jogadas < 9);
+        } while (!ganhou && jogadas < 9);
 
         imprimirTabuleiro(tabuleiro);
 
         if (!ganhou) {
-            printf("\nO tabuleiro finalizou sem ganhador!\n");
+            printf("\nO jogo finalizou sem ganhador!\n");
         }
 
         printf("\nDigite 1 para jogar novamente: \n");
-        scanf("%d", &opcao);
+        scanf("%d", &input);
 
-    } while(opcao == 1);
+    } while(input == 1);
     return 0;
 }

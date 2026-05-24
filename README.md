@@ -1,8 +1,6 @@
-Projeto da segunda unidade da disciplina DIM0320 - Algoritmo e Programação de Computadores.
-
 ## Jogo da Velha
 
-Implementação do clássico jogo da velha em C.
+Projeto da segunda unidade da disciplina DIM0320 - Algoritmo e Programação de Computadores.
 
 ### Compilação e Execução
 
